@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+    table{width:100%;}
+        body{
+        background-color:lightblue;
+        }
+        table, th, td, tr {
+            border: 1px solid black;
+
+        }
+        td,th {
+            padding:20px;
+            text-align:center;
+        }
+        button{
+            margin-bottom:20px;
+            background-color:blue;
+            padding:10px;
+            border-radius:3px;
+        }
+        a{
+            color:white;
+            text-decoration:none;
+        }
+        .edit{
+            color:white;
+        }
+        .edit:hover {
+            color:red;
+            text-decoration: underline;
+
+        }
+        .btn2{
+            margin-top:20px;
+            width:80px;
+        }
+    </style>
+</head>
+<body>
+<h2>Book Details</h2> <button><a href="{% url 'book' %}">Add Book</a></button>
+<table>
+    <tr>
+        <th>Book Name</th>
+        <th>Book Code</th>
+        <th>Author Name</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Amount</th>
+        <th>Created date</th>
+        <th>Updated date</th>
+        <th>Action</th>
+        <th>Delete</th>
+        <th>Take</th>
+        <th>Retain</th>
+    </tr>
+    {% for i in obj %}
+    <tr>
+        <td>{{i.Name}}</td>
+        <td>{{i.Code}}</td>
+        <td>{{i.Author_name}}</td>
+        <td>{{i.Date}}</td>
+        <td>{{i.Status}}</td>
+        <td>{{i.Amount}}</td>
+        <td>{{i.Created_date}}</td>
+        <td>{{i.Updated_date}}</td>
+        <td><button class="btn2"><a class="edit" href="{% url 'updatebook' i.id %}">Edit </a> </td></button>
+        <td><button class="btn2"><a class="edit" href="{% url 'deletebook' i.id %}">Delete </a> </td></button>
+        <td><button class="btn2"><a class="edit" href="{% url 'takebook' i.id %}">Take </a> </td></button>
+        <td><button class="btn2"><a class="edit" href="{% url 'retainbook' i.id %}">Retain </a> </td></button>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
+
+
